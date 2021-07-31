@@ -1,0 +1,119 @@
+{% extends 'template.html' %} {% block content %}
+<style>
+    .abc {
+        border-radius: 5px;
+        border: 2px solid green;
+        text-align: center;
+    }
+    
+    #file[value]::-webkit-progress-value {
+        background-color: rgb(67, 184, 73);
+        border-radius: 10px;
+    }
+    
+    #file[value]::-webkit-progress-bar {
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid green;
+    }
+    
+    .aaa {
+        display: none;
+    }
+    
+    .myDIV:hover+.aaa {
+        display: block;
+        position: absolute;
+        z-index: 5;
+    }
+</style>
+<p align="center">
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row"> {% for value in col %}
+                <div class="col-md-2">
+                    <p align="center"><br><br>
+                        <b style="font-size: 80px;">{{ value.nirf }}</b>
+                        <b style="font-size: 40px;"><sup>th</sup></b>
+                        <br>NIRF '19</p>
+                </div>
+                <div class="col-md-2">
+                    <p align="center"><br><br>
+                        <img style="width:150px;height:150px;" src="{{ value.C_img }}">
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    <a href="{{ value.C_web }}" target="blank">
+                        <h2><b>{{ value.C_name }}</b></h2>
+                    </a>
+
+                    <div class="container" style="padding: 5%;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="well abc myDIV">
+                                    <b class="" style="font-size: 50px;">{{ value.rating }}☆<small style="font-size: 10px;">▼</small></b>
+                                    <br> Ratings
+                                </div>
+                                <div class="aaa">
+                                    <div style="border-radius:10px;border:2px solid green;width:420px;height:140px;padding:3%;
+                                background-color: rgb(237, 248, 218);" class="container">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                Placements
+                                                <br>Infrastructure
+                                                <br>Faculty_Course_Curriculum
+                                                <br>Crowd_Campus_Life
+                                                <br>Value_for_Money
+                                            </div>
+                                            <div class="col-md-4">
+                                                <progress style=" border-radius: 10px;" id="file" value="{{ value.Placements }}" max="5"> {{ value.Placements }} </progress>
+                                                <br><progress style="border-radius: 10px;" id="file" value="{{ value.Infrastructure }}" max="5"> {{ value.Infrastructure }} </progress>
+                                                <br><progress style="border-radius: 10px;" id="file" value="{{ value.Faculty_Course_Curriculum }}" max="5"> {{ value.Faculty_Course_Curriculum }}</progress>
+                                                <br><progress style="border-radius: 10px;" id="file" value="{{ value.Crowd_Campus_Life }}" max="5"> {{ value.Crowd_Campus_Life }} </progress>
+                                                <br><progress style="border-radius: 10px;" id="file" value="{{ value.Value_for_Money }}" max="5"> {{ value.Value_for_Money }} </progress>
+                                            </div>
+                                            <div class="col-md-1">
+                                                &nbsp;<b>{{ value.Placements }}</b>
+                                                <br> &nbsp;<b>{{ value.Infrastructure }}</b>
+                                                <br> &nbsp;<b>{{ value.Faculty_Course_Curriculum }}</b>
+                                                <br> &nbsp;<b>{{ value.Crowd_Campus_Life }}</b>
+                                                <br> &nbsp;<b>{{ value.Value_for_Money }}</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well abc">
+                                    <b style="font-size: 50px;">₹{{ value.fee }}</b>
+                                    <br> Fees in Lakhs</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well abc">
+                                    <b style="font-size: 50px;">₹{{ value.salary }}</b>
+                                    <br> Salary in Lakhs</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p align="right"><a href="{{ value.C_details }}" target="blank">More Details</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+            <h2 align="center">Ready Reviews On This College</h2>
+            <br> {% for value in col1 %}
+            <div class="well" style="border:1px lightgrey solid">
+                <p style="padding-left: 30px;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTLEPjUgevL6xlKrL4li_EtsLTsvKzG7-gOOz8ILSkhg62ZHGCq&usqp=CAU" width="30px" height="30px" style="padding-bottom: 5px;">
+                    <b>{{ value.name }} | {{ value.designation }} | {{ value.rate }}☆</b>
+                </p>
+                <p style="padding-left: 100px;"> {{ value.comment }}</p>
+            </div>
+            {% endfor %}
+            <br>
+        </div>
+    </div>
+
+</p>
+{% endblock %}

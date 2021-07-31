@@ -1,0 +1,47 @@
+{% extends 'template.html' %} {% block content %}
+<p align="center">
+    <script>
+        function showDiv() {
+            document.getElementById('welcomeDiv').style.display = "block";
+            document.getElementById('starttest').style.display = "none";
+        }
+    </script>
+    <div class="container" id="starttest">
+        <div class="jumbotron">
+            <h1 class="entry-title">Free IQ Test</h1>
+            <hr />
+            <p class="text-justify">This free IQ test contains 10 questions of multiple choices, it shouldn’t take you more than 15 minutes to finish, make sure you’re relaxed before starting. You will be see your score after clicking on the “submit” button at the bottom of
+                the page, however, it’s important to remember that this IQ test or any other similar tests cannot test your real intelligence, so if you get a very low score don’t panic, it might be that you’re just not familiar with these types of questions,
+                also before clicking “submit” make sure all the answers are check.</p>
+            <p>
+                Now we will start will an example and provide its answer.<br /> Examples: please enter the missing number: 1, 2, 3, 4, ? The answer is 5.
+            </p><br>
+            <input type="button" style="width: 200px;height:50px;font-size:20px;" class="btn btn-primary" value="Start Test" onclick="showDiv()">
+
+        </div>
+    </div>
+    <div class="container" id="welcomeDiv" style="display:none;">
+        <div class="jumbotron">
+            <h2 align="center">IQ Test</h2>
+            <form action="/iq_func" method="POST">
+                {% csrf_token %}
+                <hr> {% for value in test %}
+                <div>
+                    <br>{{ value.id }}. &emsp; {{ value.Question }}
+                    <br>{{ value.Option }}
+                    <br>{{ value.Answer }}
+                    <br>
+                    <input type="radio" value="a" name="{{   value.id  }}">a&emsp;
+                    <input type="radio" value="b" name="{{   value.id  }}">b&emsp;
+                    <input type="radio" value="c" name="{{   value.id  }}">c&emsp;
+                    <input type="radio" value="d" name="{{   value.id  }}">d&emsp;
+                    <br>
+                </div>
+                <hr> {% endfor %}<br>
+                <input type="submit" class="btn btn-primary" name="Submit">
+            </form>
+        </div>
+    </div>
+
+</p>
+{% endblock %}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<title>Career Guidance</title>
+<style>
+    b {
+        color: rgb(34, 177, 34);
+    }
+    
+    .icon-bar {
+        color: rgb(34, 177, 34);
+    }
+    
+    a {
+        color: rgb(34, 177, 34);
+        font-weight: 200;
+    }
+    
+    a:hover {
+        color: green;
+        font-weight: 400;
+    }
+    
+    .navbar {
+        background-color: rgb(183, 255, 183);
+        padding: 5px;
+    }
+    
+    footer {
+        background-color: rgb(178, 243, 178);
+        padding: 5px;
+        bottom: 0px;
+        width: 100%;
+        position: fixed;
+    }
+    
+    .icon-bar {
+        background-color: green;
+    }
+</style>
+</head>
+
+<body>
+    <nav class="navbar navbar">
+        <div class=" container-fluid ">
+            <div class="navbar-header ">
+                <button type="button " class="navbar-toggle " data-toggle="collapse " data-target="#myNavbar ">
+              <span class="icon-bar "></span>
+              <span class="icon-bar "></span>
+              <span class="icon-bar "></span>                        
+            </button>
+                <a class="navbar-brand " href="/ " style="color:rgb(156, 219, 60);font-size:40px "><b>C</b>areer <b>G</b>uidance</a>
+            </div>
+            <div class="collapse navbar-collapse " id="myNavbar " style="color:rgb(156, 219, 60);">
+                <ul class=" nav navbar-nav ">
+                    <li class="active "><a href="/ ">Home</a></li>
+                    <li class="dropdown ">
+                        <a class="dropdown-toggle " data-toggle="dropdown " href="# ">Test <span class="caret "></span></a>
+                        <ul class="dropdown-menu ">
+                            <li><a href="/iq ">IQ</a></li>
+                            <li><a href="# ">Personality</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/about ">About Us</a></li>
+                    <li><a href="/Resume/resume ">Resume</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right ">
+                    {% if user.is_authenticated %}
+                    <li>Hello, {{user.first_name}}</li>
+                    <li><a href="/accounts/logout "><span class="glyphicon glyphicon-log-out "></span>Logout</a></li>
+                    {% else %}
+                    <li><a href="/accounts/signup "><span class="glyphicon glyphicon-user "></span> Sign Up</a></li>
+                    <li><a href="/accounts/login "><span class="glyphicon glyphicon-log-in "></span> Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %} {% endblock %}
+    <footer>
+        <h5 align="center "><b>Designed By Nisarg and Nirmit Patil</b></h5>
+    </footer>
+</body>
+
+</html>

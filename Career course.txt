@@ -1,0 +1,17 @@
+Science:
+1.Engineering
+2.Pharmacy
+3.MBBS
+4.BSC(any)
+
+Commerce:
+1.CA
+2.LLB
+3.BBA/BMS
+4.BCOM(any)
+
+Arts:
+1.BA
+2.BHM OR BEM
+3.BA+LLB
+4.B.Ed OR D.Ed

@@ -1,0 +1,45 @@
+{% extends 'template.html' %} {% block content %}
+<h3 align="center">Hello {{ name }}!!!!</h3>
+<p align="center">
+    <script>
+        function showDiv() {
+            document.getElementById('welcomeDiv').style.display = "block";
+            document.getElementById('starttest').style.display = "none";
+        }
+    </script>
+    <div class="container" id="starttest">
+        <div class="jumbotron">
+            <h1 class="entry-title">General Test</h1>
+            <hr />
+            <p class="text-justify">Something Something.</p>
+            <p>
+                Now we will start will an example and provide its answer.<br /> Examples: please enter the missing number: 1, 2, 3, 4, ? The answer is 5.
+            </p>
+            <br>
+            <input type="button" {% if not user.is_authenticated %} disabled {% endif %} style="width: 200px;height:50px;font-size:20px;" class="btn btn-primary" value="Start Test" onclick="showDiv()">
+        </div>
+    </div>
+    <div class="container" id="welcomeDiv" style="display:none;">
+        <div class="jumbotron">
+            <h2 align="center">General Test</h2>
+            <form action="/general_func" method="POST">
+                {% csrf_token %}
+                <hr> {% for value in test %}
+                <div>
+                    <br>{{ value.id }}. &emsp; {{ value.Question }}
+                    <br>{{ value.Option }}
+                    <br>{{ value.Answer }}
+                    <br>
+                    <input type="radio" value="a" name="{{   value.id  }}">a&emsp;
+                    <input type="radio" value="b" name="{{   value.id  }}">b&emsp;
+                    <input type="radio" value="c" name="{{   value.id  }}">c&emsp;
+                    <input type="radio" value="d" name="{{   value.id  }}">d&emsp;
+                    <br>
+                </div>
+                <hr> {% endfor %}<br>
+                <input type="submit" class="btn btn-primary" name="Submit">
+            </form>
+        </div>
+    </div>
+
+</p> {% endblock %}

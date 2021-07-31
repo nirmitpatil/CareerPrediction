@@ -1,0 +1,45 @@
+{% extends 'template.html' %} {% block content %}
+<div class="container">
+    <div class="jumbotrom" style="margin-left: 20%;margin-top: 3%;margin-right: 20%;">
+        <form class="form-horizontal" action="/accounts/login" method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <div id="legend " align="center">
+                    <legend class=" ">Login</legend>
+                </div>
+                <div class="control-group ">
+                    <!-- Username -->
+                    <label class="control-label " for="username">Username</label>
+                    <div class="controls ">
+                        <input type="text" class="form-control" id="username" name="username" required placeholder=" " class="input-xlarge ">
+                        <p class="help-block ">Username can contain any letters or numbers, without spaces</p>
+                    </div>
+                </div>
+
+
+                <div class="control-group ">
+                    <!-- Password-->
+                    <label class="control-label " for="password">Password</label>
+                    <div class="controls">
+                        <input type="password" class="form-control" id="password" name="password" required placeholder=" " class="input-xlarge ">
+                        <p class="help-block ">Password should be at least 4 characters</p>
+                    </div>
+                </div>
+
+
+                <div class="control-group ">
+                    <!-- Button -->
+                    <div class="controls ">
+                        <button class="btn btn-success ">Login</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <div>
+            <h3>
+                {% for message in messages %} {{message}} {% endfor %}
+            </h3>
+        </div>
+    </div>
+</div>
+{% endblock %}

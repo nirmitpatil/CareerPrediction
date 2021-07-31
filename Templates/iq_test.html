@@ -1,0 +1,31 @@
+{% extends 'template.html' %} {% block content %}
+<p align="center">
+    <div class="container">
+        <div class="jumbotron">
+            <div class="bg-success" style="width: 1000px;height:50px;font-weight:bold; font-size:30px;border-radius:5px;border:2px solid green;padding:10px;">
+                <p>Your IQ is around:{{ count }}</p>
+            </div>
+            <h2>IQ Scale Range</h2>
+            <hr />
+            <p>Your IQ is a measure of your intelligence. The higher the IQ the better. Your IQ is usually measured over a general IQ scale range and the standard IQ range is as follows:</p>
+            <p class="text-justify"><strong>140 and over : </strong>If you have an IQ range of 140 and over, it means you are a genius or almost genius.</p>
+            <p class="text-justify"><strong>120 - 139 : </strong>With an IQ of 120 to 139, it means you have very superior intelligence and your intelligence is better than most. A superior intelligence means that your intelligence is better than most people but not as high
+                as those with an IQ of 140.</p>
+            <p class="text-justify"><strong>110 - 119 : </strong>On the other hand, if you have an IQ of 110-119, it means you have a superior intelligence and that means that your intelligence is on middle ground- which means that it is high but not higher than most.</p>
+            <p class="text-justify"><strong>90 - 109 : </strong>When you have an intelligence of 90-109, it means that you have an intelligence of normal or average people. Normal thinking means that you are less intelligent and generally have a slower thinking. So people who
+                cannot get to the solution or are slower in thinking will mean that they have normal intelligence.</p>
+            <p class="text-justify"><strong>80 - 89 : </strong>On the other hand, if you have an intelligence of 80-89, that means you are a dull person. A dull person or boring person means that they generally tend to indulge in things that are too enjoyable. Dull people tend
+                not to indulge in things that are too demanding.</p>
+            <p class="text-justify"><strong>Below 80 : </strong>Give it another try :) maybe you will see the logic behind some questions after several tries. Also make sure you didn't leave some questions unanswered, leaving a question unanswered will give you a 0 point for
+                that question.</p>
+            <h2>Normal Distribution & IQ Scores</h2>
+            <hr />
+            <p>The properties of the normal distribution apply to IQ scores:</p>
+            <p class="text-justify"><strong>50% </strong>of IQ scores fall between <strong>90</strong> and <strong>110</strong></p>
+            <p class="text-justify"><strong>70% </strong>of IQ scores fall between <strong>85</strong> and <strong>115</strong></p>
+            <p class="text-justify"><strong>95% </strong>of IQ scores fall between <strong>70</strong> and <strong>130</strong></p>
+            <p class="text-justify"><strong>99.5% </strong>of IQ scores fall between <strong>60</strong> and <strong>140</strong></p>
+        </div>
+    </div>
+</p>
+{% endblock %}

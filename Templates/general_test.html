@@ -1,0 +1,52 @@
+{% extends 'template.html' %} {% block content %}
+
+<p align="center">
+    <script>
+        function showDiv() {
+            document.getElementById('welcomeDiv').style.display = "block";
+            document.getElementById('starttest').style.display = "none";
+        }
+    </script>
+    <div class="container" id="starttest">
+        <div class="jumbotron">
+            <p align="center">
+                <div class="container">
+                    <div class="jumbotron">
+                        <div class="bg-success" style="width: 1000px;height:50px;font-weight:bold; font-size:30px;border-radius:5px;border:2px solid green;padding:10px;">
+                            <p>We would suggest you give our {{ suggested }} test.</p>
+                            <br>
+                            <p align="center"> <input type="button" style="width: 200px;height:50px;font-size:20px;" class="btn btn-primary" value="Start Test" onclick="showDiv()">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </p>
+        </div>
+    </div>
+    <div class="container" id="welcomeDiv" style="display:none;">
+        <div class="jumbotron">
+            <h2 align="center"> {{ suggested }} Test</h2>
+            <form action="/advance_func" method="POST">
+                {% csrf_token %}
+
+                <input type="text" hidden value="{{ test_section }}" name="test_section">
+                <hr> {% for value in test %}
+                <div>
+                    <br>{{ value.id }}. &emsp; {{ value.Question }}
+                    <br>{{ value.Option }}
+                    <br>{{ value.Answer }}
+                    <br>
+                    <input type="radio" value="a" name="{{   value.id  }}">a&emsp;
+                    <input type="radio" value="b" name="{{   value.id  }}">b&emsp;
+                    <input type="radio" value="c" name="{{   value.id  }}">c&emsp;
+                    <input type="radio" value="d" name="{{   value.id  }}">d&emsp;
+                    <br>
+                </div>
+                <hr> {% endfor %}<br>
+                <input type="submit" class="btn btn-primary" name="Submit">
+            </form>
+        </div>
+    </div>
+
+</p>
+{% endblock %}
